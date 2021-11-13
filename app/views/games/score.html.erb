@@ -1,0 +1,14 @@
+<h1>Result</h1>
+
+<% if @test[:message] == 'ok' %>
+    <p><strong>Congratulations!</strong> <%=@test[:word].upcase%> is a valid English word. Total score is <%=@test[:score]%>. </p>
+<% elsif @test[:message] == 'not_grid' %>
+    <p> Sorry but <%=@test[:word].upcase%> can't be built out of <%=@grid%>. Total score is <%=@test[:score]%>. </p>
+<% elsif @test[:message] == 'not_valid' %>
+    <p> Sorry but <%=@test[:word].upcase%> does not seem to be a valid English word. Total score is <%=@test[:score]%>. </p>
+<% else @test[:message] == 'not_grid_valid' %>
+    <p> Sorry but <%=@test[:word].upcase%> is neither a valild English word, nor can it be build from <%=@grid%>. Total score is <%=@test[:score]%>. </p>
+<% end %>
+<% session[:score] = @test[:score] %>
+<br>
+<%= link_to 'Play again', new_path %>
